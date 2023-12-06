@@ -1,6 +1,6 @@
 {
   "name": "ts-treemap-esm",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "ESM fork of ts-treemap",
   "type": "module",
   "exports": "./dist/main.js",
