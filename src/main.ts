@@ -11,6 +11,7 @@ export const isIterable = <K, V>(value: unknown): value is Iterable<readonly [K,
     return false;
   }
   const itr = value as Iterable<readonly [K, V]>;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (itr[Symbol.iterator] == null) {
     return false;
   }
@@ -86,7 +87,7 @@ export default class TreeMap<K, V> extends Map {
     return this.compareFn;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/explicit-module-boundary-types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/explicit-module-boundary-types, class-methods-use-this
   private isCompareFn = (value: any): value is (a: K, b: K) => number => {
     return typeof value === 'function';
   };
@@ -184,6 +185,7 @@ export default class TreeMap<K, V> extends Map {
       return this.compareFn(a[0], b[0]);
     });
     entries.forEach(([k, v]) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       normalMap.set(k, v);
     });
     return normalMap;
